@@ -17,6 +17,7 @@ def backtracking_csp(csp):
 
 def backtracking(assignment, csp : Wordoku_CSP):
     csp.nodes_generated+=1
+    #print(csp.nodes_generated)
     if set(assignment.keys()) == csp.variables_set:
         return csp
 
@@ -63,40 +64,11 @@ def remove_possibilities_from_others(assignment, csp, curr, value):
 
     return True
 
-def min_conflict(csp: Wordoku_CSP):
-
-    max_c_val = 3*9 + 1
-    min_conflict_allowed = max_c_val
-
-    csp.create_wordoku_random_copy()
-
-    wordoku_grid_conflict_count = csp.get_total_grid_conflict()
-
-    consistency_checks = 0
-    max_consistency_checks = (10**5)//2
-    
-    while consistency_checks < max_consistency_checks and wordoku_grid_conflict_count > 0:
-        csp.nodes_generated+=1
-        row , col = csp.get_random_row_col()
-        if csp.get_cell_conflict_count(row, col, csp.wordoku[row][col]) > 0:
-            for elem in range(len(csp.wordoku)):
-                wordoku_cell_conflict_count = csp.get_cell_conflict_count(row, col, elem+1)
-                if wordoku_cell_conflict_count < min_conflict_allowed:
-                    min_conflict_allowed = wordoku_cell_conflict_count
-                    csp.wordoku[row][col] = elem + 1
-        
-        wordoku_grid_conflict_count = csp.get_total_grid_conflict()
-        consistency_checks+=1
-        min_conflict_allowed = max_c_val
-    return csp
-
 
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("input_file")
-    current_wordoku_path = parser.parse_args().input_file
+    current_wordoku_path = "./input.txt"
     print("Loading Wordoku From: {}".format(current_wordoku_path))
     start = time.time()
     wordoku = Wordoku_CSP(current_wordoku_path)
@@ -109,6 +81,5 @@ if __name__ == "__main__":
     print("Total Search Time : {} seconds".format(search_end_time-search_time))
     print("Conflicts Remaining : {}".format(solution.get_total_grid_conflict()))
     print("Nodes Generated : {}".format(solution.nodes_generated))
-
     print("Words Found : {}".format(solution.find_words_in_wordoku()))
     

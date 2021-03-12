@@ -7,7 +7,7 @@ class Wordoku_CSP:
     def __init__(self,input_path):
         self.wordoku = self.parse_input(input_path)
         self.decoder = self.encode_characters()
-        self.id_row = "ABCDEFGHI"#A
+        self.id_row = "RANDOMSTG"
         self.id_col = "123456789"
         self.variables = [a + b for a in self.id_row for b in self.id_col]
         self.variables_set = set(self.variables)
@@ -15,7 +15,7 @@ class Wordoku_CSP:
         self.constraints = self.get_constraints()
         self.assignment = {}
         self.nodes_generated = 0
-        #self.prune_domain()
+        self.prune_domain()
 
     def check_solved(self):
         for var in self.variables:
@@ -58,15 +58,22 @@ class Wordoku_CSP:
                     domains[self.id_row[row] + self.id_col[col]] = {self.wordoku[row][col]}
         return domains
 
-    # def prune_domain(self):
-    #     for i in range(len(self.wordoku)):
-    #         for j in range(len(self.wordoku[0])):
-    #             if len(self.domains[self.encode_cell(i,j)]) == 1:
-    #                 for elem in self.constraints[self.encode_cell(i,j)]:
-    #                     val = self.wordoku[i][j]
-    #                     row, col = self.decode_cell(elem)
-    #                     if val in self.domains[self.encode_cell(row,col)]:
-    #                         self.domains[self.encode_cell(row,col)].remove(val)
+    def prune_domain(self):
+        star_count = 0
+        for r in self.wordoku:
+            for elem in r :
+                if elem == 0:
+                    star_count+=1
+        if star_count < 64:
+            return
+        for i in range(len(self.wordoku)):
+            for j in range(len(self.wordoku[0])):
+                if len(self.domains[self.encode_cell(i,j)]) == 1:
+                    for elem in self.constraints[self.encode_cell(i,j)]:
+                        val = self.wordoku[i][j]
+                        row, col = self.decode_cell(elem)
+                        if val in self.domains[self.encode_cell(row,col)]:
+                            self.domains[self.encode_cell(row,col)].remove(val)
 
 
 
@@ -91,7 +98,7 @@ class Wordoku_CSP:
         return decoder
         
     def output_wordoku(self):
-        out_file =  open("output.txt", "w")
+        out_file =  open("solution.txt", "w")
         out_file.writelines([" ".join([ self.decoder[x] if x in self.decoder else "*" for x in row]) + "\n" for row in self.wordoku])
         out_file.close()
 
@@ -163,7 +170,7 @@ class Wordoku_CSP:
 
         if len(real_words) == 0:
             real_words.append("NONE")
-        out_file =  open("output.txt", "a")
+        out_file =  open("solution.txt", "a")
         out_file.writelines(["\nWords Found\n"] + real_words)
         out_file.close()
         return real_words
