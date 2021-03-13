@@ -10,17 +10,6 @@ Y * * * * * * * S
 * * * * * I T * *
 * * * * * * A * P
 
-sol1
-W I T O S Y P A N 
-N Y O P I A S W T 
-A P S T W N Y O I 
-O T I N Y S W P A 
-Y N A I P W O T S 
-P S W A T O I N Y 
-T O Y S A P N I W 
-S A P W N I T Y O 
-I W N Y O T A S P 
-
 TC2
 * * * * * P W R I
 D * R I * * N * *
@@ -32,19 +21,6 @@ E * G * * * * O R
 * * I * * O R * N
 W E P N * * * * *
 
-Sol2 
-
-N G E O D P W R I 
-D P R I G W N E O 
-I W O R N E G D P 
-R N D G O I P W E 
-P O W D E R I N G 
-E I G W P N D O R 
-O R N P I D E G W 
-G D I E W O R P N 
-W E P N R G O I D 
-
-
 TC 3
 * A * * * * * D *
 * * S * * * B * *
@@ -55,18 +31,6 @@ TC 3
 * * * B * W * * *
 A * * * * * * * *
 T * * * L * S * *
-soln:
-W A N S T B I D L 
-D L S W I A B T N 
-B I T L N D W S A 
-I B L T W S A N D 
-N W A D B L T I S 
-S T D N A I L W B 
-L N I B S W D A T 
-A S B I D T N L W 
-T D W A L N S B I 
-
-
 
 TC 4
 * R * * N * B * *
@@ -78,17 +42,6 @@ E * * * * U * * *
 * * * * * A * * *
 * * B * S * * * M
 * * O * * * * S *
-
-soln4
-M R U A N E B O S 
-N O E S B M R U A 
-B A S O U R E M N 
-O U A M E S N B R 
-R S N B A O M E U 
-E B M N R U S A O 
-S M R E O A U N B 
-A E B U S N O R M 
-U N O R M B A S E 
 
 
 TC 5
@@ -102,14 +55,3 @@ P * * * * W * * B
 B * * * * * * * *
 * * * * * * * * *
 E R * * * K B * *
-
-soln
-K P A R E B I W D 
-D W E A I P K B R 
-I B R K W D P A E 
-P I D E K W A R B 
-R E B D A I W K P 
-W A K P B R D E I 
-B K P I R A E D W 
-A D W B P E R I K 
-E R I W D K B P A 
